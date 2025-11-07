@@ -1,0 +1,45 @@
+@Suppliers.API_HostAddress = http://localhost:5010
+
+GET {{Suppliers.API_HostAddress}}/weatherforecast/
+Accept: application/json
+
+### ExampleExcel Report
+POST {{Suppliers.API_HostAddress}}/Report/ExampleExcel/
+Content-Type: application/json
+
+{
+}
+###
+
+### ContpaqExcel Report - Sin filtros
+POST {{Suppliers.API_HostAddress}}/Report/ContpaqExcel/
+Content-Type: application/json
+
+{
+  "FolioFiscal": "",
+  "FechaInicial": "",
+  "FechaFinal": "",
+  "TipoComprobante": null,
+  "Rfc": "",
+  "Serie": "",
+  "Folio": "",
+  "Download": true
+}
+###
+
+### ContpaqExcel Report - Con filtros
+# TipoComprobante: "I" = Ingreso, "E" = Egreso, "T" = Traslado, "N" = Nómina, "P" = Pago
+POST {{Suppliers.API_HostAddress}}/Report/ContpaqExcel/
+Content-Type: application/json
+
+{
+  "FolioFiscal": "",
+  "FechaInicial": "01/01/2024",
+  "FechaFinal": "31/12/2024",
+  "TipoComprobante": "I",
+  "Rfc": "",
+  "Serie": "",
+  "Folio": "",
+  "Download": true
+}
+###
