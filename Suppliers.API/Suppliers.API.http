@@ -1,10 +1,10 @@
-@Suppliers.API_HostAddress = http://localhost:5010
+@SuppliersAPI_HostAddress = http://localhost:5010
 
-GET {{Suppliers.API_HostAddress}}/weatherforecast/
+GET {{SuppliersAPI_HostAddress}}/weatherforecast/
 Accept: application/json
 
 ### ExampleExcel Report
-POST {{Suppliers.API_HostAddress}}/Report/ExampleExcel/
+POST {{SuppliersAPI_HostAddress}}/Report/ExampleExcel/
 Content-Type: application/json
 
 {
@@ -12,7 +12,7 @@ Content-Type: application/json
 ###
 
 ### ContpaqExcel Report - Sin filtros
-POST {{Suppliers.API_HostAddress}}/Report/ContpaqExcel/
+POST {{SuppliersAPI_HostAddress}}/Report/ContpaqExcel/
 Content-Type: application/json
 
 {
@@ -29,7 +29,7 @@ Content-Type: application/json
 
 ### ContpaqExcel Report - Con filtros
 # TipoComprobante: "I" = Ingreso, "E" = Egreso, "T" = Traslado, "N" = Nómina, "P" = Pago
-POST {{Suppliers.API_HostAddress}}/Report/ContpaqExcel/
+POST {{SuppliersAPI_HostAddress}}/Report/ContpaqExcel/
 Content-Type: application/json
 
 {
