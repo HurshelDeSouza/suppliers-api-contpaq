@@ -26,25 +26,32 @@ public class ContpaqExcel
         indexRow = sheet.AgregarEncabezado("Reporte CONTPAQ", indexRow, reportData.Rows.Count);
         indexRow++;
 
-        // Definir headers
+        // Definir headers según CONTPAQ.xlsx
         string[] headers = { 
-            "Folio Fiscal (UUID)", 
-            "Fecha", 
-            "Tipo Comprobante", 
-            "RFC Emisor", 
+            "Tarjeta Tipo", 
+            "Comprobante Comprobante", 
+            "Serie", 
+            "Folio", 
+            "RFC Emisor",
             "Nombre Emisor",
-            "RFC Receptor",
-            "Nombre Receptor",
-            "Serie",
-            "Folio",
-            "SubTotal",
-            "Descuento",
+            "Marca",
+            "Tipo Cambio",
             "Total",
-            "Moneda",
-            "Forma Pago",
-            "Método Pago",
-            "Uso CFDI",
-            "Estatus"
+            "Responsable",
+            "Proveedor",
+            "Referencia",
+            "Observaciones",
+            "Abonado Contabilidad",
+            "Abonado Bancos",
+            "Abonado Comercial",
+            "Estatus",
+            "Listo",
+            "Estado Pagado",
+            "Validez",
+            "Forma",
+            "Método",
+            "Listado de Cancelación del Documento",
+            "Fecha de Cancelación del Documento"
         };
 
         var rowTable = indexRow;
@@ -56,30 +63,30 @@ public class ContpaqExcel
             var excelRow = sheet.CreateRow(indexRow++);
             var col = 0;
             
-            excelRow.EscribirValor(col++, row.FolioFiscal);
-            if (row.Fecha.HasValue)
-            {
-                excelRow.EscribirValor(col++, row.Fecha.Value, dateStyle);
-            }
-            else
-            {
-                excelRow.EscribirValor(col++, "");
-            }
-            excelRow.EscribirValor(col++, row.TipoComprobante);
-            excelRow.EscribirValor(col++, row.RfcEmisor);
-            excelRow.EscribirValor(col++, row.NombreEmisor);
-            excelRow.EscribirValor(col++, row.RfcReceptor);
-            excelRow.EscribirValor(col++, row.NombreReceptor);
+            excelRow.EscribirValor(col++, row.TarjetaTipo);
+            excelRow.EscribirValor(col++, row.ComprobanteComprobante);
             excelRow.EscribirValor(col++, row.Serie);
             excelRow.EscribirValor(col++, row.Folio);
-            excelRow.EscribirValor(col++, (double)row.SubTotal, moneyStyle);
-            excelRow.EscribirValor(col++, (double)row.Descuento, moneyStyle);
+            excelRow.EscribirValor(col++, row.RfcEmisor);
+            excelRow.EscribirValor(col++, row.NombreEmisor);
+            excelRow.EscribirValor(col++, row.Marca);
+            excelRow.EscribirValor(col++, row.TipoCambio);
             excelRow.EscribirValor(col++, (double)row.Total, moneyStyle);
-            excelRow.EscribirValor(col++, row.Moneda);
-            excelRow.EscribirValor(col++, row.FormaPago);
-            excelRow.EscribirValor(col++, row.MetodoPago);
-            excelRow.EscribirValor(col++, row.UsoCfdi);
+            excelRow.EscribirValor(col++, row.Responsable);
+            excelRow.EscribirValor(col++, row.Proveedor);
+            excelRow.EscribirValor(col++, row.Referencia);
+            excelRow.EscribirValor(col++, row.Observaciones);
+            excelRow.EscribirValor(col++, row.AbonadoContabilidad);
+            excelRow.EscribirValor(col++, row.AbonadoBancos);
+            excelRow.EscribirValor(col++, row.AbonadoComercial);
             excelRow.EscribirValor(col++, row.Estatus);
+            excelRow.EscribirValor(col++, row.Listo);
+            excelRow.EscribirValor(col++, row.EstadoPagado);
+            excelRow.EscribirValor(col++, row.Validez);
+            excelRow.EscribirValor(col++, row.Forma);
+            excelRow.EscribirValor(col++, row.Metodo);
+            excelRow.EscribirValor(col++, row.ListadoCancelacionDocumento);
+            excelRow.EscribirValor(col++, row.FechaCancelacionDocumento);
         }
 
         // Aplicar autofiltro

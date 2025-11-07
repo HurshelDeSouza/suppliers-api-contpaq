@@ -62,9 +62,8 @@ public class ContpaqReport : CommonReportConfig<ContpaqData, ContpaqFilterReport
         {
             Rows = comprobantes.Select(c => new ContpaqRow
             {
-                FolioFiscal = c.Uuid,
-                Fecha = c.Fecha,
-                TipoComprobante = c.TipoDeComprobante switch
+                TarjetaTipo = c.Fecha.ToString("dd/MM/yyyy"),
+                ComprobanteComprobante = c.TipoDeComprobante switch
                 {
                     "I" => "Ingreso",
                     "E" => "Egreso",
@@ -73,20 +72,28 @@ public class ContpaqReport : CommonReportConfig<ContpaqData, ContpaqFilterReport
                     "P" => "Pago",
                     _ => c.TipoDeComprobante
                 },
-                RfcEmisor = c.CfdiEmisor?.Rfc ?? "",
-                NombreEmisor = c.CfdiEmisor?.Nombre ?? "",
-                RfcReceptor = c.CfdiReceptor?.Rfc ?? "",
-                NombreReceptor = c.CfdiReceptor?.Nombre ?? "",
                 Serie = c.Serie ?? "",
                 Folio = c.Folio ?? "",
-                SubTotal = c.SubTotal,
-                Descuento = c.Descuento ?? 0,
+                RfcEmisor = c.CfdiEmisor?.Rfc ?? "",
+                NombreEmisor = c.CfdiEmisor?.Nombre ?? "",
+                Marca = c.Moneda ?? "",
+                TipoCambio = c.TipoCambio?.ToString() ?? "",
                 Total = c.Total,
-                Moneda = c.Moneda,
-                FormaPago = c.FormaPago ?? "",
-                MetodoPago = c.MetodoPago ?? "",
-                UsoCfdi = c.CfdiReceptor?.UsoCfdi ?? "",
-                Estatus = c.Estatus ?? ""
+                Responsable = "",
+                Proveedor = "",
+                Referencia = "",
+                Observaciones = "",
+                AbonadoContabilidad = "0",
+                AbonadoBancos = "0",
+                AbonadoComercial = "0",
+                Estatus = c.Estatus ?? "",
+                Listo = "",
+                EstadoPagado = "",
+                Validez = "",
+                Forma = c.FormaPago ?? "",
+                Metodo = c.MetodoPago ?? "",
+                ListadoCancelacionDocumento = "",
+                FechaCancelacionDocumento = ""
             }).ToList()
         };
     }
