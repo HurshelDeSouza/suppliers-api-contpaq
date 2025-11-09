@@ -43,3 +43,67 @@ Content-Type: application/json
   "Download": true
 }
 ###
+
+### Recibidas CONTPAQ Report - Sin filtros
+POST {{SuppliersAPI_HostAddress}}/Report/RecibidasContpaqExcel/
+Content-Type: application/json
+
+{
+  "FolioFiscal": "",
+  "FechaInicial": "",
+  "FechaFinal": "",
+  "TipoComprobante": null,
+  "Rfc": "",
+  "Serie": "",
+  "Folio": "",
+  "Download": true
+}
+###
+
+### Recibidas CONTPAQ Report - Con filtros
+POST {{SuppliersAPI_HostAddress}}/Report/RecibidasContpaqExcel/
+Content-Type: application/json
+
+{
+  "FolioFiscal": "",
+  "FechaInicial": "01/01/2024",
+  "FechaFinal": "31/12/2024",
+  "TipoComprobante": "I",
+  "Rfc": "",
+  "Serie": "",
+  "Folio": "",
+  "Download": true
+}
+###
+
+### Emitidas CONTPAQ Report - Sin filtros
+POST {{SuppliersAPI_HostAddress}}/Report/EmitidasContpaqExcel/
+Content-Type: application/json
+
+{
+  "FolioFiscal": "",
+  "FechaInicial": "",
+  "FechaFinal": "",
+  "TipoComprobante": null,
+  "Rfc": "",
+  "Serie": "",
+  "Folio": "",
+  "Download": true
+}
+###
+
+### Emitidas CONTPAQ Report - Con filtros
+POST {{SuppliersAPI_HostAddress}}/Report/EmitidasContpaqExcel/
+Content-Type: application/json
+
+{
+  "FolioFiscal": "",
+  "FechaInicial": "01/01/2024",
+  "FechaFinal": "31/12/2024",
+  "TipoComprobante": "I",
+  "Rfc": "",
+  "Serie": "",
+  "Folio": "",
+  "Download": true
+}
+###

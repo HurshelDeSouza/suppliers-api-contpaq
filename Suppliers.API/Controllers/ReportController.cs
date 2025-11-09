@@ -53,4 +53,20 @@ public class ReportController(IReportBl bl) : ControllerBase
         return ReportResponse(response, filter.Download);
     }
 
+    [AllowAnonymous]
+    [HttpPost("RecibidasContpaqExcel")]
+    public async Task<ActionResult> RecibidasContpaqExcel(ContpaqFilterReport filter)
+    {
+        var response = await _bl.RecibidasContpaqExcel(filter, customLogo: filter.CustomLogo, customPath: filter.CustomPath);
+        return ReportResponse(response, filter.Download);
+    }
+
+    [AllowAnonymous]
+    [HttpPost("EmitidasContpaqExcel")]
+    public async Task<ActionResult> EmitidasContpaqExcel(ContpaqFilterReport filter)
+    {
+        var response = await _bl.EmitidasContpaqExcel(filter, customLogo: filter.CustomLogo, customPath: filter.CustomPath);
+        return ReportResponse(response, filter.Download);
+    }
+
 }

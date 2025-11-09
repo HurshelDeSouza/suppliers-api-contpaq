@@ -8,4 +8,6 @@ public interface IReportBl
 {
     public Task<ApiResponse<string>> ExampleExcel(ExampleFilterReport filter, string customLogo = "", string customPath = "");
     public Task<ApiResponse<string>> ContpaqExcel(ContpaqFilterReport filter, string customLogo = "", string customPath = "");
+    public Task<ApiResponse<string>> RecibidasContpaqExcel(ContpaqFilterReport filter, string customLogo = "", string customPath = "");
+    public Task<ApiResponse<string>> EmitidasContpaqExcel(ContpaqFilterReport filter, string customLogo = "", string customPath = "");
 }

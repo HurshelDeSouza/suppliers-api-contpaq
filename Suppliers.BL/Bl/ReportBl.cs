@@ -45,4 +45,38 @@ public class ReportBl(DescargaCfdiGfpContext context, IHttpContextAccessor httpC
         }
         return response;
     }
+
+    public async Task<ApiResponse<string>> RecibidasContpaqExcel(ContpaqFilterReport filter, string customLogo = "", string customPath = "")
+    {
+        var response = new ApiResponse<string>();
+        try
+        {
+            var report = new RecibidasContpaqReport(filter, _context, "path_logo", ConfigurationKey.ReportPath, customLogo, customPath);
+            await report.Init();
+            var path = report.GenerateExcel($"Recibidas_CONTPAQ_{DateTime.Now.Ticks}.xlsx");
+            response.SetComplete(path);
+        }
+        catch (Exception ex)
+        {
+            Loggers.Error(GetType(), _infoToken.UserId, nameof(RecibidasContpaqExcel), $"{ex}");
+        }
+        return response;
+    }
+
+    public async Task<ApiResponse<string>> EmitidasContpaqExcel(ContpaqFilterReport filter, string customLogo = "", string customPath = "")
+    {
+        var response = new ApiResponse<string>();
+        try
+        {
+            var report = new EmitidasContpaqReport(filter, _context, "path_logo", ConfigurationKey.ReportPath, customLogo, customPath);
+            await report.Init();
+            var path = report.GenerateExcel($"Emitidas_CONTPAQ_{DateTime.Now.Ticks}.xlsx");
+            response.SetComplete(path);
+        }
+        catch (Exception ex)
+        {
+            Loggers.Error(GetType(), _infoToken.UserId, nameof(EmitidasContpaqExcel), $"{ex}");
+        }
+        return response;
+    }
 }
