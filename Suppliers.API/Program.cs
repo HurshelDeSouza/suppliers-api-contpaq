@@ -8,10 +8,10 @@ using Suppliers.BL.Interfaces;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Obtiene la colección de servicios para registrar dependencias
+// Obtiene la colecciï¿½n de servicios para registrar dependencias
 var services = builder.Services;
 
-// Configuración de la base
+// Configuraciï¿½n de la base
 services.AddDbContext<DescargaCfdiGfpContext>((serviceProvider, dbContext) =>
 {
     var connectionString = builder.Configuration.GetConnectionString("SQLConnectionMain");
@@ -20,6 +20,7 @@ services.AddDbContext<DescargaCfdiGfpContext>((serviceProvider, dbContext) =>
 
 services.AddScoped<IAuthBl, AuthBl>();
 services.AddScoped<IReportBl, ReportBl>();
+services.AddScoped<ICFDINominaBl, CFDINominaBl>();
 
 var allowedIps = builder.Configuration.GetSection("AllowedIpsConfig").Get<List<IpConfig>>();
 services.AddSingleton(allowedIps);
@@ -28,5 +29,5 @@ builder.Services.AddScoped<IpRestrictionFilter>();
 
 QuestPDF.Settings.License = LicenseType.Community;
 
-// Llama al método Main de GenericProgram para configurar y arrancar la aplicación
+// Llama al mï¿½todo Main de GenericProgram para configurar y arrancar la aplicaciï¿½n
 GenericProgram<uint>.Main(builder, services, 5010, "Suppliers API");

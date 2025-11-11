@@ -107,3 +107,234 @@ Content-Type: application/json
   "Download": true
 }
 ###
+
+
+###############################################################################
+# CRUD CFDI NOMINA
+###############################################################################
+
+### Obtener todos los CFDIs de Nómina (paginado)
+GET {{SuppliersAPI_HostAddress}}/CFDINomina?page=1&pageSize=10
+Accept: application/json
+
+###
+
+### Obtener un CFDI de Nómina por ID
+GET {{SuppliersAPI_HostAddress}}/CFDINomina/1
+Accept: application/json
+
+###
+
+### Buscar CFDIs de Nómina por filtros
+GET {{SuppliersAPI_HostAddress}}/CFDINomina/search?rfcEmisor=AAA010101AAA&page=1&pageSize=10
+Accept: application/json
+
+###
+
+### Buscar por UUID
+GET {{SuppliersAPI_HostAddress}}/CFDINomina/search?uuid=12345678-1234-1234-1234-123456789012
+Accept: application/json
+
+###
+
+### Buscar por rango de fechas
+GET {{SuppliersAPI_HostAddress}}/CFDINomina/search?fechaInicio=2024-01-01&fechaFin=2024-12-31&page=1&pageSize=10
+Accept: application/json
+
+###
+
+### Crear un nuevo CFDI de Nómina
+POST {{SuppliersAPI_HostAddress}}/CFDINomina
+Content-Type: application/json
+
+{
+  "uuid": "12345678-1234-1234-1234-123456789012",
+  "version": "4.0",
+  "serie": "A",
+  "folio": "001",
+  "fecha": "2024-01-15T10:30:00",
+  "fechaTimbrado": "2024-01-15T10:35:00",
+  "tipoDeComprobante": "N",
+  "lugarExpedicion": "06000",
+  "moneda": "MXN",
+  "tipoCambio": 1.0,
+  "total": 15000.00,
+  "subTotal": 15000.00,
+  "descuento": 0.00,
+  "metodoPago": "PUE",
+  "formaPago": "99",
+  "estatus": "Vigente",
+  "selloDigital": "SELLO_DIGITAL_EJEMPLO",
+  "certificado": "00001000000123456789",
+  "emisor": {
+    "rfc": "AAA010101AAA",
+    "nombre": "EMPRESA EJEMPLO SA DE CV",
+    "regimenFiscal": "601"
+  },
+  "receptor": {
+    "rfc": "XAXX010101000",
+    "nombre": "JUAN PEREZ LOPEZ",
+    "usoCfdi": "CN01",
+    "domicilioFiscalReceptor": "06000",
+    "regimenFiscalReceptor": "605"
+  },
+  "nominaDetalle": {
+    "tipoNomina": "O",
+    "fechaPago": "2024-01-15",
+    "fechaInicialPago": "2024-01-01",
+    "fechaFinalPago": "2024-01-15",
+    "numDiasPagados": 15.0,
+    "totalPercepciones": 15000.00,
+    "totalDeducciones": 0.00,
+    "totalOtrosPagos": 0.00,
+    "curpEmpleado": "PELJ800101HDFRPN09",
+    "numSeguridadSocial": "12345678901",
+    "fechaInicioRelLaboral": "2020-01-01",
+    "antiguedad": "P4Y",
+    "tipoContrato": "01",
+    "numEmpleado": "EMP001",
+    "departamento": "Ventas",
+    "puesto": "Vendedor",
+    "salarioBaseCotApor": 500.00,
+    "salarioDiarioIntegrado": 550.00,
+    "periodicidadPago": "04",
+    "cuentaBancaria": "1234567890",
+    "claveEntFed": "DIF"
+  },
+  "percepciones": [
+    {
+      "tipoPercepcion": "001",
+      "clave": "001",
+      "concepto": "Sueldo",
+      "importeGravado": 10000.00,
+      "importeExento": 0.00
+    },
+    {
+      "tipoPercepcion": "019",
+      "clave": "002",
+      "concepto": "Horas Extra",
+      "importeGravado": 5000.00,
+      "importeExento": 0.00
+    }
+  ],
+  "deducciones": [
+    {
+      "tipoDeduccion": "002",
+      "clave": "001",
+      "concepto": "ISR",
+      "importe": 1500.00
+    }
+  ],
+  "otrosPagos": [
+    {
+      "tipoOtroPago": "002",
+      "clave": "001",
+      "concepto": "Subsidio al empleo",
+      "importe": 500.00,
+      "subsidioCausado": 500.00
+    }
+  ]
+}
+
+###
+
+### Actualizar un CFDI de Nómina
+PUT {{SuppliersAPI_HostAddress}}/CFDINomina/1
+Content-Type: application/json
+
+{
+  "uuid": "12345678-1234-1234-1234-123456789012",
+  "version": "4.0",
+  "serie": "A",
+  "folio": "001",
+  "fecha": "2024-01-15T10:30:00",
+  "fechaTimbrado": "2024-01-15T10:35:00",
+  "tipoDeComprobante": "N",
+  "lugarExpedicion": "06000",
+  "moneda": "MXN",
+  "tipoCambio": 1.0,
+  "total": 16000.00,
+  "subTotal": 16000.00,
+  "descuento": 0.00,
+  "metodoPago": "PUE",
+  "formaPago": "99",
+  "estatus": "Vigente",
+  "selloDigital": "SELLO_DIGITAL_EJEMPLO_ACTUALIZADO",
+  "certificado": "00001000000123456789",
+  "emisor": {
+    "rfc": "AAA010101AAA",
+    "nombre": "EMPRESA EJEMPLO SA DE CV",
+    "regimenFiscal": "601"
+  },
+  "receptor": {
+    "rfc": "XAXX010101000",
+    "nombre": "JUAN PEREZ LOPEZ",
+    "usoCfdi": "CN01",
+    "domicilioFiscalReceptor": "06000",
+    "regimenFiscalReceptor": "605"
+  },
+  "nominaDetalle": {
+    "tipoNomina": "O",
+    "fechaPago": "2024-01-15",
+    "fechaInicialPago": "2024-01-01",
+    "fechaFinalPago": "2024-01-15",
+    "numDiasPagados": 15.0,
+    "totalPercepciones": 16000.00,
+    "totalDeducciones": 0.00,
+    "totalOtrosPagos": 0.00,
+    "curpEmpleado": "PELJ800101HDFRPN09",
+    "numSeguridadSocial": "12345678901",
+    "fechaInicioRelLaboral": "2020-01-01",
+    "antiguedad": "P4Y",
+    "tipoContrato": "01",
+    "numEmpleado": "EMP001",
+    "departamento": "Ventas",
+    "puesto": "Vendedor Senior",
+    "salarioBaseCotApor": 550.00,
+    "salarioDiarioIntegrado": 600.00,
+    "periodicidadPago": "04",
+    "cuentaBancaria": "1234567890",
+    "claveEntFed": "DIF"
+  },
+  "percepciones": [
+    {
+      "tipoPercepcion": "001",
+      "clave": "001",
+      "concepto": "Sueldo",
+      "importeGravado": 11000.00,
+      "importeExento": 0.00
+    },
+    {
+      "tipoPercepcion": "019",
+      "clave": "002",
+      "concepto": "Horas Extra",
+      "importeGravado": 5000.00,
+      "importeExento": 0.00
+    }
+  ],
+  "deducciones": [
+    {
+      "tipoDeduccion": "002",
+      "clave": "001",
+      "concepto": "ISR",
+      "importe": 1600.00
+    }
+  ],
+  "otrosPagos": [
+    {
+      "tipoOtroPago": "002",
+      "clave": "001",
+      "concepto": "Subsidio al empleo",
+      "importe": 600.00,
+      "subsidioCausado": 600.00
+    }
+  ]
+}
+
+###
+
+### Eliminar un CFDI de Nómina
+DELETE {{SuppliersAPI_HostAddress}}/CFDINomina/1
+Accept: application/json
+
+###
