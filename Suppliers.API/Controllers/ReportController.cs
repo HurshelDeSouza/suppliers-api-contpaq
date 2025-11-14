@@ -69,4 +69,20 @@ public class ReportController(IReportBl bl) : ControllerBase
         return ReportResponse(response, filter.Download);
     }
 
+    [AllowAnonymous]
+    [HttpPost("BovedaEmittedExcel")]
+    public async Task<ActionResult> BovedaEmittedExcel(ContpaqFilterReport filter)
+    {
+        var response = await _bl.BovedaEmittedExcel(filter, customLogo: filter.CustomLogo, customPath: filter.CustomPath);
+        return ReportResponse(response, filter.Download);
+    }
+
+    [AllowAnonymous]
+    [HttpPost("BovedaReceivedExcel")]
+    public async Task<ActionResult> BovedaReceivedExcel(ContpaqFilterReport filter)
+    {
+        var response = await _bl.BovedaReceivedExcel(filter, customLogo: filter.CustomLogo, customPath: filter.CustomPath);
+        return ReportResponse(response, filter.Download);
+    }
+
 }

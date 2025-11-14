@@ -79,4 +79,38 @@ public class ReportBl(DescargaCfdiGfpContext context, IHttpContextAccessor httpC
         }
         return response;
     }
+
+    public async Task<ApiResponse<string>> BovedaEmittedExcel(ContpaqFilterReport filter, string customLogo = "", string customPath = "")
+    {
+        var response = new ApiResponse<string>();
+        try
+        {
+            var report = new BovedaEmittedReport(filter, _context, "path_logo", ConfigurationKey.ReportPath, customLogo, customPath);
+            await report.Init();
+            var path = report.GenerateExcel($"Boveda_Emitted_{DateTime.Now.Ticks}.xlsx");
+            response.SetComplete(path);
+        }
+        catch (Exception ex)
+        {
+            Loggers.Error(GetType(), _infoToken.UserId, nameof(BovedaEmittedExcel), $"{ex}");
+        }
+        return response;
+    }
+
+    public async Task<ApiResponse<string>> BovedaReceivedExcel(ContpaqFilterReport filter, string customLogo = "", string customPath = "")
+    {
+        var response = new ApiResponse<string>();
+        try
+        {
+            var report = new BovedaReceivedReport(filter, _context, "path_logo", ConfigurationKey.ReportPath, customLogo, customPath);
+            await report.Init();
+            var path = report.GenerateExcel($"Boveda_Received_{DateTime.Now.Ticks}.xlsx");
+            response.SetComplete(path);
+        }
+        catch (Exception ex)
+        {
+            Loggers.Error(GetType(), _infoToken.UserId, nameof(BovedaReceivedExcel), $"{ex}");
+        }
+        return response;
+    }
 }

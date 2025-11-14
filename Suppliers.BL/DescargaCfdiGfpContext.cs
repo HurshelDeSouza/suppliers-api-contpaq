@@ -628,7 +628,7 @@ public partial class DescargaCfdiGfpContext : DbContext
         {
             entity.HasKey(e => e.IdComprobante).HasName("PK__Pagos_De__7DE63600F52BA6BE");
 
-            entity.ToTable("Pagos_Detalle");
+            entity.ToTable("CFDI_Pagos_Detalle");
 
             entity.Property(e => e.IdComprobante)
                 .ValueGeneratedNever()
@@ -655,7 +655,7 @@ public partial class DescargaCfdiGfpContext : DbContext
         {
             entity.HasKey(e => e.IdDoctoRel).HasName("PK__Pagos_Do__357D1442DEE9E205");
 
-            entity.ToTable("Pagos_DoctoRelacionado");
+            entity.ToTable("CFDI_Pagos_DoctoRelacionado");
 
             entity.Property(e => e.IdDoctoRel).HasColumnName("ID_DoctoRel");
             entity.Property(e => e.EquivalenciaDr)
@@ -704,7 +704,7 @@ public partial class DescargaCfdiGfpContext : DbContext
         {
             entity.HasKey(e => e.IdPago).HasName("PK__Pagos_Pa__AE88B429F325A7A9");
 
-            entity.ToTable("Pagos_Pago");
+            entity.ToTable("CFDI_Pagos_Pago");
 
             entity.Property(e => e.IdPago).HasColumnName("ID_Pago");
             entity.Property(e => e.FormaDePagoP)

@@ -107,3 +107,67 @@ Content-Type: application/json
   "Download": true
 }
 ###
+
+### Boveda Emitted Report - Sin filtros
+POST {{SuppliersAPI_HostAddress}}/Report/BovedaEmittedExcel/
+Content-Type: application/json
+
+{
+  "FolioFiscal": "",
+  "FechaInicial": "",
+  "FechaFinal": "",
+  "TipoComprobante": null,
+  "Rfc": "",
+  "Serie": "",
+  "Folio": "",
+  "Download": true
+}
+###
+
+### Boveda Emitted Report - Con filtros
+POST {{SuppliersAPI_HostAddress}}/Report/BovedaEmittedExcel/
+Content-Type: application/json
+
+{
+  "FolioFiscal": "",
+  "FechaInicial": "01/01/2024",
+  "FechaFinal": "31/12/2024",
+  "TipoComprobante": "I",
+  "Rfc": "",
+  "Serie": "",
+  "Folio": "",
+  "Download": true
+}
+###
+
+### Boveda Received Report - Sin filtros
+POST {{SuppliersAPI_HostAddress}}/Report/BovedaReceivedExcel/
+Content-Type: application/json
+
+{
+  "FolioFiscal": "",
+  "FechaInicial": "",
+  "FechaFinal": "",
+  "TipoComprobante": null,
+  "Rfc": "",
+  "Serie": "",
+  "Folio": "",
+  "Download": true
+}
+###
+
+### Boveda Received Report - Con filtros
+POST {{SuppliersAPI_HostAddress}}/Report/BovedaReceivedExcel/
+Content-Type: application/json
+
+{
+  "FolioFiscal": "",
+  "FechaInicial": "01/01/2024",
+  "FechaFinal": "31/12/2024",
+  "TipoComprobante": "I",
+  "Rfc": "",
+  "Serie": "",
+  "Folio": "",
+  "Download": true
+}
+###
